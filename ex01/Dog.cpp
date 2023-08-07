@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:59:54 by kfujita           #+#    #+#             */
-/*   Updated: 2023/08/06 23:40:46 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/08/07 21:52:29 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Dog::Dog() :
 		<< std::endl;
 
 	this->type = "Dog";
+	this->brain = new Brain();
 }
 
 Dog::Dog(const Dog &v) :
@@ -38,6 +39,8 @@ Dog::Dog(const Dog &v) :
 		<< this
 		<< ")"
 		<< std::endl;
+
+	this->brain = new Brain(*(v.brain));
 }
 
 Dog::~Dog()
@@ -48,6 +51,8 @@ Dog::~Dog()
 		<< this
 		<< ")"
 		<< std::endl;
+
+	delete this->brain;
 }
 
 Dog &Dog::operator=(const Dog v)
@@ -65,6 +70,8 @@ Dog &Dog::operator=(const Dog v)
 	if (this == &v)
 		return *this;
 
+	this->brain = new Brain(*(v.brain));
+
 	return *this;
 }
 
@@ -74,4 +81,14 @@ void Dog::makeSound() const
 		<< this->type
 		<< " made sound `bark`"
 		<< std::endl;
+}
+
+std::string Dog::getIdea(size_t index) const
+{
+	return this->brain->getIdea(index);
+}
+
+void Dog::setIdea(size_t index, const std::string &v)
+{
+	this->brain->setIdea(index, v);
 }

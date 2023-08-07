@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 18:55:03 by kfujita           #+#    #+#             */
-/*   Updated: 2023/08/07 21:51:36 by kfujita          ###   ########.fr       */
+/*   Created: 2023/08/07 20:30:57 by kfujita           #+#    #+#             */
+/*   Updated: 2023/08/07 21:48:59 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Animal.hpp"
+#include <string>
 
-#include "Brain.hpp"
+#define BRAIN_IDEAS_COUNT 100
 
-class Dog : public Animal
+class Brain
 {
 private:
-	Brain* brain;
+	std::string ideas[BRAIN_IDEAS_COUNT];
 
 public:
-	Dog();
-	Dog(const Dog& v);
-	~Dog();
+	Brain();
+	Brain(const Brain& v);
+	~Brain();
 
-	Dog& operator=(const Dog v);
-
-	void makeSound() const;
+	Brain& operator=(const Brain& v);
 
 	std::string getIdea(size_t index) const;
 	void setIdea(size_t index, const std::string& v);

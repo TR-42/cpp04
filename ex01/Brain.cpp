@@ -1,65 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/06 23:35:49 by kfujita           #+#    #+#             */
-/*   Updated: 2023/08/07 21:52:44 by kfujita          ###   ########.fr       */
+/*   Created: 2023/08/07 20:43:17 by kfujita           #+#    #+#             */
+/*   Updated: 2023/08/07 21:51:05 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-#include "Cat.hpp"
+#include "Brain.hpp"
 
-Cat::Cat() :
-	Animal()
+Brain::Brain()
 {
 	std::cout
-		<< "Cat class default constructor called"
+		<< "Brain class default constructor called"
 		<<" ("
 		<< this
 		<< ")"
 		<< std::endl;
-
-	this->type = "Cat";
-	this->brain = new Brain();
 }
 
-Cat::Cat(const Cat &v) :
-	Animal(v)
+Brain::Brain(const Brain &v)
 {
 	std::cout
-		<< "Cat class copy constructor called"
+		<< "Brain class copy constructor called"
 		<<" (copy from "
 		<< &v
 		<< " to "
 		<< this
 		<< ")"
 		<< std::endl;
-
-	this->brain = new Brain(*(v.brain));
+	
+	for (size_t i = 0; i < BRAIN_IDEAS_COUNT; i++)
+		this->ideas[i] = v.ideas[i];
 }
 
-Cat::~Cat()
+Brain::~Brain()
 {
 	std::cout
-		<< "Cat class destructor called"
+		<< "Brain class destructor called"
 		<<" ("
 		<< this
 		<< ")"
 		<< std::endl;
-
-	delete this->brain;
 }
 
-Cat &Cat::operator=(const Cat v)
+Brain &Brain::operator=(const Brain &v)
 {
-	this->Animal::operator=(v);
 	std::cout
-		<< "Cat class copy assignment operator called"
+		<< "Brain class copy assignment operator called"
 		<<" (copy from "
 		<< &v
 		<< " to "
@@ -70,25 +63,21 @@ Cat &Cat::operator=(const Cat v)
 	if (this == &v)
 		return *this;
 
-	this->brain = new Brain(*(v.brain));
+	for (size_t i = 0; i < BRAIN_IDEAS_COUNT; i++)
+		this->ideas[i] = v.ideas[i];
 
 	return *this;
 }
 
-void Cat::makeSound() const
+std::string Brain::getIdea(size_t index) const
 {
-	std::cout
-		<< this->type
-		<< " made sound `meow`"
-		<< std::endl;
+	return index < BRAIN_IDEAS_COUNT
+		? this->ideas[index]
+		: std::string();
 }
 
-std::string Cat::getIdea(size_t index) const
+void Brain::setIdea(size_t index, const std::string &v)
 {
-	return this->brain->getIdea(index);
-}
-
-void Cat::setIdea(size_t index, const std::string &v)
-{
-	this->brain->setIdea(index, v);
+	if (index < BRAIN_IDEAS_COUNT)
+		this->ideas[index] = v;
 }
