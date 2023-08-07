@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:50:19 by kfujita           #+#    #+#             */
-/*   Updated: 2023/08/06 23:40:34 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/08/07 22:13:45 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,6 @@ Animal &Animal::operator=(const Animal &v)
 	this->type = v.type;
 
 	return *this;
-}
-
-void Animal::makeSound() const
-{
-	std::cout
-		<< "Animal ("
-		<< this->type
-		<< ") has no sound"
-		<< std::endl;
 }
 
 std::string Animal::getType() const

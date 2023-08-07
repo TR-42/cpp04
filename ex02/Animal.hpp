@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:50:25 by kfujita           #+#    #+#             */
-/*   Updated: 2023/08/06 23:42:51 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/08/07 22:13:35 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 
 	Animal& operator=(const Animal& v);
 
-	virtual void makeSound() const;
+	virtual void makeSound() const = 0;
 
 	std::string getType() const;
 };

@@ -6,7 +6,7 @@
 #    By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/02 18:44:15 by kfujita           #+#    #+#              #
-#    Updated: 2023/08/07 22:09:21 by kfujita          ###   ########.fr        #
+#    Updated: 2023/08/07 22:37:03 by kfujita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,9 @@ all:	$(NAME)
 
 $(NAME):	$(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
+
+test:	clean_local_obj
+	make CXXFLAGS=-DCHECK_PURE_VIRTUAL
 
 debug: clean_local_obj
 	make CXXFLAGS='-DDEBUG -g'
