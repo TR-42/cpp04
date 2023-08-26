@@ -15,6 +15,40 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 
+#include "WrongCat.hpp"
+
+static void _TestWrongCat()
+{
+	std::cout << std::endl;
+	std::cout << __FILE__ << ':' << __LINE__ << "~~~~~~~~~~~~~~~~" << std::endl;
+	std::cout << std::endl;
+
+	WrongCat* wrongCat = new WrongCat();
+
+	std::cout << std::endl;
+	std::cout << __FILE__ << ':' << __LINE__ << "~~~~~~~~~~~~~~~~" << std::endl;
+	std::cout << std::endl;
+
+	std::cout
+		<< "wrongCat type: "
+		<< wrongCat->getType()
+		<< std::endl;
+
+	std::cout << std::endl;
+	std::cout << __FILE__ << ':' << __LINE__ << "~~~~~~~~~~~~~~~~" << std::endl;
+	std::cout << std::endl;
+
+	wrongCat->makeSound();
+	std::cout << "---" << std::endl;
+	((WrongAnimal *)wrongCat)->makeSound();
+
+	std::cout << std::endl;
+	std::cout << __FILE__ << ':' << __LINE__ << "~~~~~~~~~~~~~~~~" << std::endl;
+	std::cout << std::endl;
+
+	delete wrongCat;
+}
+
 int	main(void)
 {
 	const Animal* meta = new Animal();
@@ -49,6 +83,8 @@ int	main(void)
 	delete meta;
 	delete cat;
 	delete dog;
+
+	_TestWrongCat();
 
 	return (0);
 }
